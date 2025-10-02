@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="{{ url_for('static',filename='styles.css') }}"
+      rel="stylesheet"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <title>PROJECT</title>
+  </head>
+  <body>
+    <nav>
+      <a href="./">MODEL</a>
+      <a href="./insights">INSIGHTS</a>
+    </nav>
+    <main class="main2">
+      <div id="insights" class="insights">
+        <div id="maps" class="map"></div>
+        <div class="details" id="details">
+          <form name="form2" class="form2">
+            <label for="states"
+              >Select a state:
+              <select id="states" name="states">
+                {% for state in states %}
+                <option value="{{ state[0] }}">{{ state[0] }}</option>
+                {% endfor %}
+              </select>
+            </label>
+
+            <label for="places"
+              >Select a place:
+              <select id="places" name="places"></select>
+            </label>
+
+            <input type="submit" id="submitBtn" value="Submit" />
+            <button id="clearButton">Clear Map Data</button>
+          </form>
+          <!-- <form name="form3">
+            <input type="number" placeholder="Number" name="num" value="0" />
+            <button id="ret">Retrieve</button>
+          </form> -->
+        </div>
+      </div>
+    </main>
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+  </body>
+</html>

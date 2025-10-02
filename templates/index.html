@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="{{ url_for('static',filename='styles.css') }}"
+      rel="stylesheet"
+    />
+    <title>PROJECT</title>
+  </head>
+  <body>
+    <nav>
+      <a href="./">MODEL</a>
+      <a href="./insights">INSIGHTS</a>
+    </nav>
+    <main>
+      <div id="model" class="model">
+        <div id="pictures"></div>
+        <div class="data">
+          <form class="form1" method="post" action="/predict">
+            <h1>WIND ELECTRICITY PREDICTOR</h1>
+            <input type="number" name="ws" id="ws" placeholder="WIND SPEED in kmph" />
+            <input
+              type="number"
+              name="wd"
+              id="wd"
+              placeholder="WIND DIRECTION in °"
+            />
+
+            <button id="sub">PREDICT</button>
+            {% if prediction %}
+            <p>Expected Power Generation : {{ prediction }} KWatts</p>
+            {% endif %}
+          </form>
+        </div>
+      </div>
+      </div>
+    </main>
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+  </body>
+</html>
